@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <limits.h>
 
 void change_directory(char *directory) 
 {
 	char *prev_dir = getenv("PWD");
-	
+	char current_dir[PATH_MAX];
 	if (directory == NULL || strcmp(directory, "-") == 0) 
 	{
 		directory = getenv("OLDPWD");		
@@ -24,7 +24,6 @@ void change_directory(char *directory)
 		perror("chdir");
 		return;
 	}
-	char current_dir[PATH_MAX];
 	if (getcwd(current_dir, sizeof(current_dir)) == NULL) 
 	{
 		perror("getcwd");

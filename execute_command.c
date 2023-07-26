@@ -22,7 +22,7 @@ void execute_command(char *command, char *args[])
 	{
 	set_environment_variable(args[1], args[2]);
 	}
-	Else
+	else
 	{
 	fprintf(stderr, "setenv: Invalid arguments\n");
 	}
@@ -33,7 +33,7 @@ void execute_command(char *command, char *args[])
 	{
 	unset_environment_variable(args[1]);
 	}
-	Else
+	else
 	{
 	fprintf(stderr, "unsetenv: Invalid arguments\n");
 	}
@@ -44,7 +44,7 @@ void execute_command(char *command, char *args[])
 	{
 	change_directory(args[1]);
 	}
-	Else
+	else
 	{
 	change_directory("$HOME");
 	}
@@ -68,7 +68,7 @@ void execute_command(char *command, char *args[])
 	_exit(EXIT_FAILURE);
 	}
 	}
-	Else
+	else
 	{
 	int status;
 	if (waitpid(child_pid, &status, 0) == -1)
