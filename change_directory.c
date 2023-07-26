@@ -5,26 +5,31 @@
 #include <string.h>
 #include <limits.h>
 
-void change_directory(char *directory) 
+/**
+ * change_directory - function that changes dir
+ *
+ */
+void change_directory(char *directory)
 {
 	char *prev_dir = getenv("PWD");
 	char current_dir[PATH_MAX];
-	if (directory == NULL || strcmp(directory, "-") == 0) 
+
+	if (directory == NULL || strcmp(directory, "-") == 0)
 	{
-		directory = getenv("OLDPWD");		
-		if (directory == NULL) 
+		directory = getenv("OLDPWD");
+		if (directory == NULL)
 		{
 			fprintf(stderr, "cd: OLDPWD not set\n");
 			return;
 		}
 		printf("%s\n", directory);
 	}
-	if (chdir(directory) == -1) 
+	if (chdir(directory) == -1)
 	{
 		perror("chdir");
 		return;
 	}
-	if (getcwd(current_dir, sizeof(current_dir)) == NULL) 
+	if (getcwd(current_dir, sizeof(current_dir)) == NULL)
 	{
 		perror("getcwd");
 		return;

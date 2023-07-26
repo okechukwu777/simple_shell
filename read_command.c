@@ -2,28 +2,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char *read_command() 
+char *read_command(void)
 {
 	char *command = malloc(MAX_COMMAND_LENGTH * sizeof(char));
-	if (command == NULL) 
+
+	if (command == NULL)
 	{
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
-	if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL) 
+	if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL)
 	{
-		if (feof(stdin)) 
+		if (feof(stdin))
 		{
 			printf("\n");
 			exit(0);
-		} 
-		else 
+		}
+		else
 		{
 			perror("fgets");
 			exit(EXIT_FAILURE);
 		}
 	}
 	remove_newline(command);
-	return command;
+	return (command);
 }
-

@@ -3,32 +3,35 @@
 #include <stdlib.h>
 #include <string.h>
 
-void process_alias_command(char *args[]) 
+void process_alias_command(char *args[])
 {
-	if (args[1] == NULL) 
+	if (args[1] == NULL)
 	{
 		print_aliases();
-	} 
-	else 
+	}
+	else
 	{
 		int arg_index = 1;
-		while (args[arg_index] != NULL) 
+
+		while (args[arg_index] != NULL)
 		{
 			char *arg = args[arg_index];
 			char *equal_sign = strchr(arg, '=');
-			if (equal_sign != NULL) 
+
+			if (equal_sign != NULL)
 			{
 				*equal_sign = '\0';
 				define_alias(arg, equal_sign + 1);
-			} 
-			else 
+			}
+			else
 			{
 				Alias *alias = find_alias(arg);
-				if (alias != NULL) 
+
+				if (alias != NULL)
 				{
 					printf("%s='%s'\n", alias->name, alias->value);
-				} 
-				else 
+				}
+				else
 				{
 					fprintf(stderr, "alias: %s: not found\n", arg);
 				}

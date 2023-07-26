@@ -3,6 +3,6 @@
 
 int is_cd_command(char *command)
 {
-    return (strcmp(command, "cd") == 0);
+	return (strcmp(command, "cd") == 0);
 }
 

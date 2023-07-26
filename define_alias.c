@@ -3,17 +3,19 @@
 #include <stdio.h>
 #include <string.h>
 
-void define_alias(char *name, char *value) 
+void define_alias(char *name, char *value)
 {
 	Alias *alias = find_alias(name);
-	if (alias != NULL) 
+
+	if (alias != NULL)
 	{
 		free(alias->value);
 		alias->value = strdup(value);
-	} 
-	else 
+	}
+	else
 	{
 		Alias *new_alias = (Alias *)malloc(sizeof(Alias));
+
 		new_alias->name = strdup(name);
 		new_alias->value = strdup(value);
 		new_alias->next = alias_list;

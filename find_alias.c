@@ -2,30 +2,33 @@
 #include <string.h>
 
 
-Alias *find_alias(char *name) 
+Alias *find_alias(char *name)
 {
-	static Alias *current_alias = NULL;
-	if (name == NULL) 
+	static Alias *current_alias;
+
+	if (name == NULL)
 	{
 		Alias *alias = current_alias;
-		if (alias != NULL) 
+
+		if (alias != NULL)
 		{
 			current_alias = alias->next;
 		}
-		return alias;
+		return (alias);
 	}
-	else 
+	else
 	{
 		Alias *alias = alias_list;
-		while (alias != NULL) 
+
+		while (alias != NULL)
 		{
-			if (strcmp(alias->name, name) == 0) 
+			if (strcmp(alias->name, name) == 0)
 			{
-				return alias;
+				return (alias);
 			}
 			alias = alias->next;
 		}
-		return NULL;
+		return (NULL);
 	}
 }
 

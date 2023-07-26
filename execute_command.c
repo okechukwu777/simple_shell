@@ -56,13 +56,15 @@ void execute_command(char *command, char *args[])
 	else
 	{
 	pid_t child_pid = fork();
+
 	if (child_pid == -1)
 	{
 	perror("fork");
 	}
 	else if (child_pid == 0)
 	{
-	if (execvp(command, args) == -1)
+	if
+	(execvp(command, args) == -1)
 	{
 	perror("execvp");
 	_exit(EXIT_FAILURE);
@@ -71,7 +73,9 @@ void execute_command(char *command, char *args[])
 	else
 	{
 	int status;
-	if (waitpid(child_pid, &status, 0) == -1)
+
+	if
+	(waitpid(child_pid, &status, 0) == -1)
 	{
 	perror("waitpid");
 	}
